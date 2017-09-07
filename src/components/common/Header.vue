@@ -195,6 +195,7 @@
     color: #b2bac2;
 }
 .more-dropdown-list{
+  display: none;
   width: 134px;
   position: absolute;
   left: auto;
@@ -249,9 +250,9 @@
                     <router-link tag="li" to="/page1" class="nav-menu-item">
                         <a><i class="fengwei icon-tripshezhishi iconfont"></i>设置</a>
                     </router-link>
-                    <router-link tag="li" to="/page1" class="nav-menu-item more">
+                    <li class="nav-menu-item more" @mouseout="naxMenuShow1()"  @mouseover="naxMenuShow1()">
                         <a><i class="fengwei icon-guanyu iconfont"></i>关于<i class="more-icon iconfont icon-iconfontxiangxia1copy19"></i></a>
-                        <ul class="nav-menu more-dropdown-list">
+                        <ul class="nav-menu more-dropdown-list" :class="[isToggle1?'isShow':'']">
                             <div class="nav-menu-item-group">
                               <router-link tag="li" to="/page1" class="nav-menu-item">
                                   <a>下载应用</a>
@@ -270,7 +271,7 @@
                               </router-link>
                             </div>
                         </ul>
-                    </router-link>
+                    </li>
                 </div>
                 <div class="nav-menu-item-group">
                     <router-link tag="li" to="/page1" class="nav-menu-item">
@@ -292,7 +293,8 @@ export default {
     return{
         isA:false,
         imgSrc:"http://gold-cdn.xitu.io/v3/static/img/juejin-search-icon.6f8ba1b.svg",
-        isToggle:false
+        isToggle:false, 
+        isToggle1: false
     }
   },
   methods: {
@@ -311,14 +313,21 @@ export default {
         }else{
           this.isToggle = false;
         }
+    }, 
+    naxMenuShow1:function(){
+        if(!this.isToggle1){
+          this.isToggle1 =true;
+        }else{
+          this.isToggle1 = false;
+        }
     }
   },
   created() {
     // 点击其他不在的区域触发事件
     document.addEventListener('click', (e) => {
+      console.log(this.$el.contains(e.target));
       if (!this.$el.contains(e.target)){
-          this.isToggle = false;
-          console.log(112321321321); 
+          this.isToggle = false; 
       }
     })
   }
