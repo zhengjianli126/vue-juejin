@@ -1,5 +1,8 @@
 <style lang="scss">
 @import url("//at.alicdn.com/t/font_407438_6ao3j3pw240lik9.css");
+.fr{
+  float: right;
+}
  .main-header-box{
    height: 60px;
    width: 100%;
@@ -159,7 +162,6 @@
   }
   .nav-menu-item-group{
     padding: 12px 0;
-   
   }
   .nav-menu-item{
     cursor: pointer;
