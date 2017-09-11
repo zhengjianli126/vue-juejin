@@ -6,27 +6,39 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/page1'
+            redirect: '/timeline/subscribe',
+           
         },
         {
-            path: '/page1',
-            component: resolve => require(['../components/pages/page1.vue'], resolve)
+            path: '/timeline',
+            component: resolve => require(['../components/pages/timeline.vue'], resolve),
+            children: [
+                {
+                    path: 'subscribe',
+                    component: resolve => require(['../components/common/Fcontent.vue'], resolve),
+                    alias: '/timeline'
+                },
+                {
+                    path: '/timeline/:title',
+                    component: resolve => require(['../components/common/Fcontent.vue'], resolve)
+                }
+            ]
         },
         {
-            path: '/page2',
-            component: resolve => require(['../components/pages/page2.vue'], resolve)
+            path: '/zhuanlan',
+            component: resolve => require(['../components/pages/zhuanlan.vue'], resolve)
         },
         {
-            path: '/page3',
-            component: resolve => require(['../components/pages/page3.vue'], resolve)
+            path: '/collections',
+            component: resolve => require(['../components/pages/collections.vue'], resolve)
         },
         {
-            path: '/page4',
-            component: resolve => require(['../components/pages/page4.vue'], resolve)
+            path: '/explore',
+            component: resolve => require(['../components/pages/explore.vue'], resolve)
         },
         {
-            path: '/page5',
-            component: resolve => require(['../components/pages/page5.vue'], resolve)
+            path: '/repos',
+            component: resolve => require(['../components/pages/repos.vue'], resolve)
         },
         {
             path: '/page6',

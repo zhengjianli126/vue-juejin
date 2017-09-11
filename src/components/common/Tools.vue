@@ -45,9 +45,9 @@
 <template>
     <div class="view-nav" role="navigation">
         <ul class="nav-list left">
-            <router-link tag="li" to="/page1" class="nav-item"><a>我关注的</a></router-link>
+            <router-link tag="li" to="/timeline/subscribe" :class="($router.path==='/timeline'?'active':'')" class="nav-item"><a>我关注的</a></router-link>
             <template v-for="item in categoryList">
-                    <router-link v-if="item.isSubscribe" tag="li" to="/page2" class="nav-item"><a>{{item.name}}</a></router-link>
+                    <router-link v-if="item.isSubscribe" tag="li" :to="{path:'/timeline/'+item.title}" class="nav-item"><a>{{item.name}}</a></router-link>
             </template>
             <router-link tag="li" to="/page4" class="nav-item right"><a>标签管理</a></router-link> 
         </ul>  
@@ -56,6 +56,12 @@
 <script>
 export default {
   name:'Tools',
+  watch:{
+       '$route' (to, from) {
+      // 对路由变化作出响应....
+      console.log(to,from)
+    }
+  },
   data(){
       return {
           

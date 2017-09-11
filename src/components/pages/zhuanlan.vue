@@ -1,8 +1,8 @@
 <template>
-    <div>this is third</div>
+    <div>this is second</div>
 </template>
 <script>
 export default {
-    name: "page3"
+    name: "zhuanlan"
 }
 </script>

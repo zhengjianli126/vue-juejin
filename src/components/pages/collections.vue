@@ -1,8 +1,8 @@
 <template>
-    <div>this is second</div>
+    <div>this is third</div>
 </template>
 <script>
 export default {
-    name: "page2"
+    name: "collections"
 }
 </script>

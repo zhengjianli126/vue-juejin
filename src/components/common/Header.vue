@@ -217,11 +217,11 @@
       <nav role="navigation" class="main-nav">
         <ul class="nav-list">
           <div class="main-nav-list">       
-            <router-link tag="li" class="nav-item link-item" to="/page1"><a>首页</a></router-link>
-            <router-link tag="li" class="nav-item link-item" to="/page2"><a>专栏</a></router-link>
-            <router-link tag="li" class="nav-item link-item" to="/page3"><a>收藏集</a></router-link>
-            <router-link tag="li" class="nav-item link-item" to="/page4"><a>发现</a></router-link>
-            <router-link tag="li" class="nav-item link-item" to="/page5"><a>开源库</a></router-link>
+            <router-link tag="li" class="nav-item link-item" to="/"><a>首页</a></router-link>
+            <router-link tag="li" class="nav-item link-item" to="/zhuanlan"><a>专栏</a></router-link>
+            <router-link tag="li" class="nav-item link-item" to="/collections"><a>收藏集</a></router-link>
+            <router-link tag="li" class="nav-item link-item" to="/explore"><a>发现</a></router-link>
+            <router-link tag="li" class="nav-item link-item" to="/repos"><a>开源库</a></router-link>
           </div>
           <li class="nav-item search">
             <form role="search" v-bind:class="[isA?'asd':'']" class="search-form">
@@ -325,6 +325,7 @@ export default {
     }
   },
   created() {
+  
     // 点击其他不在的区域触发事件
     document.addEventListener('click', (e) => {
       console.log(this.$el.contains(e.target));
