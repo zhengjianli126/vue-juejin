@@ -291,6 +291,10 @@
 <script>
 export default {
   name:"myHeader",
+   watch:{
+       '$route' (to, from) {
+        
+       }},
   data(){
     return{
         isA:false,

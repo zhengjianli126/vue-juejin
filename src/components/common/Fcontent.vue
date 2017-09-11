@@ -155,6 +155,9 @@
     padding: 0 .8rem;
     height: 100%;
 }
+.active1 a {
+    color: #007fff;
+}
 </style>
 <style>
 .outer::after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}
@@ -166,14 +169,14 @@
           <header class="list-header">
                 <nav class="list-nav" role="navigation">
                     <ul class="nav-list left outer">
-                        <router-link tag="li" to="/timeline/subscribe?sort=popular" class="nav-item"><a>热门</a></router-link>
-                        <router-link tag="li" to="/timeline/subscribe?sort=newest" class="nav-item"><a>最新</a></router-link>
-                        <router-link tag="li" to="/timeline/subscribe?sort=comment" class="nav-item"><a>评论</a></router-link>
+                        <router-link tag="li" :to="services+'?sort=popular'" :class="(activeFlag?'active1':'')" class="nav-item"><a>热门</a></router-link>
+                        <router-link tag="li" :to="services+'?sort=newest'" class="nav-item"><a>最新</a></router-link>
+                        <router-link tag="li" :to="services+'?sort=comment'" class="nav-item"><a>评论</a></router-link>
                     </ul>
                     <ul class="nav-list right outer">
-                        <router-link tag="li" to="/timeline/subscribe?sort=weeklyHottest" class="nav-item"><a>本周最热</a></router-link>
-                        <router-link tag="li" to="/timeline/subscribe?sort=monthlyHottest" class="nav-item"><a>本月最热</a></router-link>
-                        <router-link tag="li" to="/timeline/subscribe?sort=hottest" class="nav-item"><a>历史最热</a></router-link>
+                        <router-link tag="li" :to="services+'?sort=weeklyHottest'" class="nav-item"><a>本周最热</a></router-link>
+                        <router-link tag="li" :to="services+'?sort=monthlyHottest'" class="nav-item"><a>本月最热</a></router-link>
+                        <router-link tag="li" :to="services+'?sort=hottest'" class="nav-item"><a>历史最热</a></router-link>
                     </ul>
                 </nav>
           </header>
@@ -230,6 +233,39 @@
 </template>
 <script>
 export default {
-  name:"Fcontent"
+  name:"Fcontent",
+   watch:{
+       '$route' (to, from) {
+      // 对路由变化作出响应....
+        var a = to.fullPath;
+        var b= to.query.sort;
+        if(b=='popular'){
+                
+        }else if(b =='newest'){
+
+        }else if(b=='comment'){
+
+        }
+        this.services = a;
+
+      
+    }
+  },
+  data(){
+      return {
+            services:'',
+            activeFlag :''    
+      }
+  },
+  created(){
+      var a = this.$route.fullPath;
+      var reg = /\/timeline/;
+        if(reg.test(a)){
+            this.activeFlag = true;
+        }else{
+            this.activeFlag = false;
+        }
+     
+  }
 }
 </script>

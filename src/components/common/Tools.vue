@@ -47,7 +47,7 @@
 <template>
     <div class="view-nav" role="navigation">
         <ul class="nav-list left">
-            <router-link tag="li" to="/timeline/subscribe" :class="($router.path==='/timeline'?'active':'')" class="nav-item"><a>我关注的</a></router-link>
+            <router-link tag="li" to="/timeline/subscribe" :class="(myServices?'active':'')" class="nav-item"><a>我关注的</a></router-link>
             <template v-for="item in categoryList">
                     <router-link v-if="item.isSubscribe" tag="li" :to="{path:'/timeline/'+item.title}" class="nav-item"><a>{{item.name}}</a></router-link>
             </template>
@@ -61,14 +61,28 @@ export default {
   watch:{
        '$route' (to, from) {
       // 对路由变化作出响应....
-      console.log(to.query);
+     var a = to.fullPath;
+     console.log(a,123)
+          if(a=='/timeline'){
+               this.myServices = true;
+          }else{
+             this.myServices = false;
+          }
       
       
     }
   },
+  created(){
+      if(this.$route.fullPath=='/timeline'){
+            this.myServices = true;
+      }else{
+          this.myServices = false;
+      }
+     
+  },
   data(){
       return {
-          
+           myServices: '',
               categoryList: [
                   {
                       "id": "5562b410e4b00c57d9b94a92",
