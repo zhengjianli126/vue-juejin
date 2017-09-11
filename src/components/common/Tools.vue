@@ -33,13 +33,15 @@
             &.last-child{
                 padding-right: 0;
             }
+            &.active a{
+                color: #007fff;    
+            }
         }
     }
 }
 .nav-list{
     position: relative;
 }
-
 </style>
 
 <template>
@@ -59,7 +61,9 @@ export default {
   watch:{
        '$route' (to, from) {
       // 对路由变化作出响应....
-      console.log(to,from)
+      console.log(to.query);
+      
+      
     }
   },
   data(){

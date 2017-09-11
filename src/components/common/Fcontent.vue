@@ -44,6 +44,117 @@
         float: right;
          border-right:0;
     }
+    .entry-list{
+        width: 100%;
+        background-color: #fff;
+    }
+    .item{
+        border-bottom: 1px solid rgba(178,186,194,.15);
+    }
+    a{
+        color: inherit;
+    }
+    .content-box{
+        display: flex;
+        align-items: center;
+        padding: 18px 24px;
+    }
+    .info-box{
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+    }
+    .meta-row{
+        font-size: 1rem;
+        color:#b2bac2;
+    }
+    .meta-list{
+        display: flex;
+        align-items: baseline;
+        white-space: nowrap;
+        .item.username{
+            display: flex;
+            align-items: baseline;
+        }
+        .item.tag{
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .user-popover-box{
+        display: flex;
+        align-items: center;
+    }
+    .meta-list .item .tag:not(:last-child):after{
+            content: "/";
+            margin: 0 .2em;
+            color: #b2bac2;
+    }
+    .meta-list .item.tag{
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .title-row{
+    margin: .5rem 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.title:visited{
+    color: #909090;
+}
+.title{
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #2e3135;
+}
+.action-list{
+    display: inline-flex;
+    white-space: nowrap;
+}
+.action-list>.item.like{
+    padding: 0;
+}
+.action-list>.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 .8rem;
+    height: 2rem;
+    font-size: 1.083rem;
+    line-height: 1;
+    color: #b2bac2;
+    border-radius: 1px;
+    border: 1px solid #edeeef;
+}
+.action-list>.item .title-box{
+    display: flex;
+    align-items: center;
+    padding: 0 .8rem;
+    height: 100%;
+}
+.action-list>.item .count{
+    margin-left: .2em;
+    font-weight: 700;
+}
+.action-list>.item.comment{
+    margin-left: -1px;
+    padding: 0;
+}
+.action-list>.item .title-box{
+    display: flex;
+    align-items: center;
+    padding: 0 .8rem;
+    height: 100%;
+}
 </style>
 <style>
 .outer::after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}
@@ -60,12 +171,60 @@
                         <router-link tag="li" to="/timeline/subscribe?sort=comment" class="nav-item"><a>评论</a></router-link>
                     </ul>
                     <ul class="nav-list right outer">
-                        <router-link tag="li" to="ss" class="nav-item"><a>本周最热</a></router-link>
-                        <router-link tag="li" to="ss" class="nav-item"><a>本月最热</a></router-link>
-                        <router-link tag="li" to="ss" class="nav-item"><a>历史最热</a></router-link>
+                        <router-link tag="li" to="/timeline/subscribe?sort=weeklyHottest" class="nav-item"><a>本周最热</a></router-link>
+                        <router-link tag="li" to="/timeline/subscribe?sort=monthlyHottest" class="nav-item"><a>本月最热</a></router-link>
+                        <router-link tag="li" to="/timeline/subscribe?sort=hottest" class="nav-item"><a>历史最热</a></router-link>
                     </ul>
                 </nav>
           </header>
+          <ul class="entry-list">
+              <router-link tag="div" to="/entry/59b605b2f265da0660295780/detail" class="entry">
+                <a class="entry-link">
+                    <div class="content-box">
+                        <div class="info-box">
+                            <div class="info-row meta-row">
+                                <ul class="meta-list">
+                                    <li class="item username clickable">
+                                        <router-link class="user-popover-box" to="/user/57ca7b8b5bbb500074e83485" tag="div">
+                                            <a>逆流的鱼</a>
+                                        </router-link>
+                                    </li>
+                                    <li class="item">3小时前</li>
+                                     <li class="item tag">
+                                        <router-link class="tag" to="/tag/Android" tag="a">
+                                           Android
+                                        </router-link>
+                                        <router-link class="tag" to="/tag/程序员" tag="a">
+                                            程序员
+                                        </router-link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info-row title-row">
+                               <router-link to="http://www.baidu.com" tag="a"class="title">天天学到夜里12点，感觉越学越迷茫，怎么办？</router-link>
+                            </div>
+                            <div class="info-row action-row">
+                                <ul class="action-list">
+                                    <li class="item like clickable">
+                                        <a class="title-box">
+                                            <img src="//gold-cdn.xitu.io/v3/static/img/like.4bf00fb.svg" class="icon">
+                                            <span class="count">21</span>
+                                        </a>
+                                    </li>
+                                    <li class="item comment clickable">
+                                        <a href="/entry/59b605b2f265da0660295780/detail#comment" target="_blank" class="title-box">
+                                            <img src="//gold-cdn.xitu.io/v3/static/img/comment.4d5744f.svg" class="icon">
+                                            <span class="count">5</span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+              </router-link>
+          </ul>
       </div>
   </div>
 </template>
