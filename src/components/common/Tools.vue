@@ -58,7 +58,7 @@
 <script>
 export default {
   name:'Tools',
-  watch:{
+  watch:{   
        '$route' (to, from) {
       // 对路由变化作出响应....
      var a = to.fullPath;
